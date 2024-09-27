@@ -1,27 +1,76 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Input Page</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            let isValid = true;
+            const errorMessages = document.querySelectorAll('.error');
+            errorMessages.forEach(msg => msg.textContent = '');
+
+            const m = parseInt(document.getElementById('m').value, 10);
+            const a = parseInt(document.getElementById('a').value, 10);
+            const c = parseInt(document.getElementById('c').value, 10);
+            const x0 = parseInt(document.getElementById('x0').value, 10);
+            const outputNumber = parseInt(document.getElementById('outputNumber').value, 10);
+
+            if (isNaN(m) || m <= 0) {
+                isValid = false;
+                document.getElementById('mError').textContent = 'm must be greater than 0';
+            }
+            if (isNaN(a) || a < 0 || a >= m) {
+                isValid = false;
+                document.getElementById('aError').textContent = 'a must be >= 0 and < m';
+            }
+            if (isNaN(c) || c < 0 || c >= m) {
+                isValid = false;
+                document.getElementById('cError').textContent = 'c must be >= 0 and < m';
+            }
+            if (isNaN(x0) || x0 < 0 || x0 >= m) {
+                isValid = false;
+                document.getElementById('x0Error').textContent = 'x0 must be >= 0 and < m';
+            }
+            if (isNaN(outputNumber) || outputNumber <= 0) {
+                isValid = false;
+                document.getElementById('outputNumberError').textContent = 'Output number must be greater than 0';
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        }
+    </script>
 </head>
 <body>
     <h2>Enter the data:</h2>
-    <form action="/randomizer/output" method="post">
+    <form action="/randomizer/output" method="post" onsubmit="validateForm(event)">
         <label for="m">m:</label>
-        <input type="number" id="m" name="m" required><br><br>
+        <input type="number" id="m" name="m" required><br>
+        <div id="mError" class="error"></div><br>
 
         <label for="a">a:</label>
-        <input type="number" id="a" name="a" required><br><br>
+        <input type="number" id="a" name="a" required><br>
+        <div id="aError" class="error"></div><br>
 
         <label for="c">c:</label>
-        <input type="number" id="c" name="c" required><br><br>
+        <input type="number" id="c" name="c" required><br>
+        <div id="cError" class="error"></div><br>
 
         <label for="x0">x0:</label>
-        <input type="number" id="x0" name="x0" required><br><br>
+        <input type="number" id="x0" name="x0" required><br>
+        <div id="x0Error" class="error"></div><br>
 
-        <label for="outputNumber">Output number:</label>
-        <input type="number" id="outputNumber" name="outputNumber" required><br><br>
+        <label for="outputNumber">output number:</label>
+        <input type="number" id="outputNumber" name="outputNumber" required><br>
+        <div id="outputNumberError" class="error"></div><br>
 
         <input type="submit" value="Submit">
     </form>

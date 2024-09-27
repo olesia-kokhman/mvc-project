@@ -23,11 +23,7 @@ public class InputController {
     }
 
     @PostMapping("/output")
-    public String submitOutput(@ModelAttribute @Valid InputData inputData, Model model, BindingResult bindingResult) {
-
-        if(bindingResult.hasErrors()) {
-            return "input";
-        }
+    public String submitOutput(@ModelAttribute InputData inputData, Model model) {
 
         Randomizer randomizer = new Randomizer(inputData);
         List<Integer> numbers = randomizer.generate();

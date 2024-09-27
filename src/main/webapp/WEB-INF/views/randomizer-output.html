@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .number-block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <p>this is output of randomized list of integers</p>
+    <h1>Output of Randomized List of Integers</h1>
+    <div>
+        <p>Generated numbers:</p>
+        <div class="number-block">
+            <p th:each="number, iterStat : ${numbers}"
+               th:text="${number}${iterStat.last ? '' : ', '}"></p>
+        </div>
+    </div>
+
 
 </body>
 </html>

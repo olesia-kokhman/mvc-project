@@ -10,12 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caabc41c-8bf0-4699-aa1e-5cdb8510eb3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/validation/CustomValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/validation/LessThanM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/university/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/InputController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/university/model/InputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/model/InputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/validation/CustomValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/validation/LessThanM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/input.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/input.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/randomizer-output.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/randomizer-output.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +177,7 @@
       <workItem from="1727366517683" duration="3119000" />
       <workItem from="1727369655933" duration="2135000" />
       <workItem from="1727385612422" duration="7616000" />
-      <workItem from="1727441910015" duration="7079000" />
+      <workItem from="1727441910015" duration="12147000" />
     </task>
     <servers />
   </component>
