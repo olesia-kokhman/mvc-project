@@ -27,6 +27,7 @@ public class InputController {
 
         Randomizer randomizer = new Randomizer(inputData);
         List<Integer> numbers = randomizer.generate();
+        System.out.println(numbers);
         model.addAttribute("numbers", numbers);
         return "randomizer-output";
     }

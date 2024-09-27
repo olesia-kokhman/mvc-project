@@ -5,9 +5,96 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Input Page</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 40px 60px;
+            width: 500px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-3px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1d72b8;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 1.1em;
+            text-align: left;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #1d72b8;
+            outline: none;
+        }
+
         .error {
             color: red;
-            font-size: 0.9em;
+            font-size: 0.85em;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: block;
+            text-align: left;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #1d72b8;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(29, 114, 184, 0.2);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #6c5ce7;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                width: 90%;
+                padding: 30px;
+            }
         }
     </style>
     <script>
@@ -50,29 +137,32 @@
     </script>
 </head>
 <body>
+<div class="form-container">
     <h2>Enter the data:</h2>
     <form action="/randomizer/output" method="post" onsubmit="validateForm(event)">
         <label for="m">m:</label>
-        <input type="number" id="m" name="m" required><br>
-        <div id="mError" class="error"></div><br>
+        <input type="number" id="m" name="m" required>
+        <div id="mError" class="error"></div>
 
         <label for="a">a:</label>
-        <input type="number" id="a" name="a" required><br>
-        <div id="aError" class="error"></div><br>
+        <input type="number" id="a" name="a" required>
+        <div id="aError" class="error"></div>
 
         <label for="c">c:</label>
-        <input type="number" id="c" name="c" required><br>
-        <div id="cError" class="error"></div><br>
+        <input type="number" id="c" name="c" required>
+        <div id="cError" class="error"></div>
 
         <label for="x0">x0:</label>
-        <input type="number" id="x0" name="x0" required><br>
-        <div id="x0Error" class="error"></div><br>
+        <input type="number" id="x0" name="x0" required>
+        <div id="x0Error" class="error"></div>
 
-        <label for="outputNumber">output number:</label>
-        <input type="number" id="outputNumber" name="outputNumber" required><br>
-        <div id="outputNumberError" class="error"></div><br>
+        <label for="outputNumber">Output number:</label>
+        <input type="number" id="outputNumber" name="outputNumber" required>
+        <div id="outputNumberError" class="error"></div>
 
         <input type="submit" value="Submit">
     </form>
+</div>
 </body>
 </html>
+
