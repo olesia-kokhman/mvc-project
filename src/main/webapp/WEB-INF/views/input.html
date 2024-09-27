@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Input Page</title>
+</head>
+<body>
+    <h2>Enter the data:</h2>
+    <form action="/randomizer/output" method="post">
+        <label for="m">m:</label>
+        <input type="number" id="m" name="m" required><br><br>
+
+        <label for="a">a:</label>
+        <input type="number" id="a" name="a" required><br><br>
+
+        <label for="c">c:</label>
+        <input type="number" id="c" name="c" required><br><br>
+
+        <label for="x0">x0:</label>
+        <input type="number" id="x0" name="x0" required><br><br>
+
+        <label for="outputNumber">Output number:</label>
+        <input type="number" id="outputNumber" name="outputNumber" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

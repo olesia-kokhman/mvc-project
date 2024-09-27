@@ -10,13 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caabc41c-8bf0-4699-aa1e-5cdb8510eb3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/config/DispatcherServletInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/InputController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/model/InputData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/model/Randomizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/input.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/randomizer-output.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContextMVC.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/controller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hello.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +177,8 @@
       <updated>1727366516371</updated>
       <workItem from="1727366517683" duration="3119000" />
       <workItem from="1727369655933" duration="2135000" />
-      <workItem from="1727385612422" duration="2213000" />
+      <workItem from="1727385612422" duration="7616000" />
+      <workItem from="1727441910015" duration="2982000" />
     </task>
     <servers />
   </component>
