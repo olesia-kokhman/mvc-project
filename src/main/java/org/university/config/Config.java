@@ -12,7 +12,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
-@ComponentScan("org.university.controller")
+@ComponentScan("org.university")
 @EnableWebMvc
 public class Config implements WebMvcConfigurer {
 

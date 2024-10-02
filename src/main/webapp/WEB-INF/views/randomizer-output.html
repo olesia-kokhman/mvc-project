@@ -22,7 +22,7 @@
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             padding: 40px 60px;
-            max-width: 700px;
+            max-width: 900px;
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -45,28 +45,16 @@
         }
 
         .number-block {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-            gap: 8px;
+            display: inline-block;
             padding: 15px 10px;
             background-color: #f9fafc;
             border: 1px solid #ebedf0;
             border-radius: 8px;
             margin: 15px 0;
-        }
-
-        .number {
-            background-color: #6c5ce7;
-            color: #ffffff;
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 1em;
+            font-size: 1.1em; /* Змінено розмір шрифту */
             font-weight: bold;
-            transition: transform 0.2s ease, background-color 0.3s ease;
-        }
-
-        .number:hover {
-            transform: scale(1.05);
+            color: #6c5ce7;
+            line-height: 1.6;
         }
 
         .btn {
@@ -92,9 +80,7 @@
 <div class="container">
     <h1>Generated Random Numbers</h1>
     <p>Below is your list of randomly generated numbers. You can regenerate them using the button below:</p>
-    <div class="number-block">
-        <span class="number" th:each="number : ${numbers}" th:text="${number}"></span>
-    </div>
+    <div class="number-block" th:text="${#strings.arrayJoin(numbers, ', ')}"></div>
     <a href="/randomizer/input" class="btn">Regenerate Numbers</a>
 </div>
 </body>
