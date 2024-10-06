@@ -10,7 +10,7 @@ import java.util.List;
 public class RandomNumbersFileWriter {
 
     public void write(List<Integer> numbers, String fileName) {
-        try (FileWriter writer = new FileWriter(fileName, true)) {
+        try (FileWriter writer = new FileWriter(fileName, false)) {
             int count = 0;
             for (Integer number : numbers) {
                 writer.write(number + " ");

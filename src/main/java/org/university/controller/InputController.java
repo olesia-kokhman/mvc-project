@@ -34,7 +34,10 @@ public class InputController {
 
         Randomizer randomizer = new Randomizer(inputData);
         List<Integer> numbers = randomizer.generate();
+        int period = randomizer.findPeriod(numbers);
+
         model.addAttribute("numbers", numbers);
+        model.addAttribute("period", period);
 
         randomNumbersFileWriter.write(numbers, "C:\\university\\7-sem\\security\\numbers.txt");
         return "randomizer-output";

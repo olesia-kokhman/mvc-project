@@ -81,6 +81,10 @@
     <h1>Generated Random Numbers</h1>
     <p>Below is your list of randomly generated numbers. You can regenerate them using the button below:</p>
     <div class="number-block" th:text="${#strings.arrayJoin(numbers, ', ')}"></div>
+
+    <div th:if="${period != -1}" class="period-block" th:text="'The period in this sequence : ' + ${period}"></div>
+    <div th:unless="${period != -1}" class="period-block">There is no period in this sequence.</div>
+
     <a href="/randomizer/input" class="btn">Regenerate Numbers</a>
 </div>
 </body>
