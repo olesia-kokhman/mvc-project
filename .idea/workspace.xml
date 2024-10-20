@@ -10,8 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caabc41c-8bf0-4699-aa1e-5cdb8510eb3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/model/MD5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/MD5Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hashing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/InputRandomizerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/model/InputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/model/InputRandomizerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/model/MD5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/model/MD5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/model/Randomizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/model/Randomizer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +31,7 @@
       <list>
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -57,6 +63,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -186,7 +193,8 @@
       <workItem from="1727938856968" duration="16000" />
       <workItem from="1728168375182" duration="7575000" />
       <workItem from="1728478395522" duration="1377000" />
-      <workItem from="1729252117498" duration="6461000" />
+      <workItem from="1729252117498" duration="7090000" />
+      <workItem from="1729374299732" duration="9068000" />
     </task>
     <servers />
   </component>

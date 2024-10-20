@@ -1,6 +1,6 @@
 package org.university.model;
 
-public class InputData {
+public class InputRandomizerData {
 
     private int m;
 
@@ -12,7 +12,7 @@ public class InputData {
 
     private int outputNumber;
 
-    public InputData(int m, int a, int c, int x0, int outputNumber) {
+    public InputRandomizerData(int m, int a, int c, int x0, int outputNumber) {
         this.m = m;
         this.a = a;
         this.c = c;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.university.model.InputData;
+import org.university.model.InputRandomizerData;
 import org.university.model.Randomizer;
 import org.university.service.RandomNumbersFileWriter;
 
@@ -15,12 +15,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/randomizer")
-public class InputController {
+public class InputRandomizerController {
 
     RandomNumbersFileWriter randomNumbersFileWriter;
 
     @Autowired
-    public InputController(RandomNumbersFileWriter randomNumbersFileWriter) {
+    public InputRandomizerController(RandomNumbersFileWriter randomNumbersFileWriter) {
         this.randomNumbersFileWriter = randomNumbersFileWriter;
     }
 
@@ -30,9 +30,9 @@ public class InputController {
     }
 
     @PostMapping("/output")
-    public String submitOutput(@ModelAttribute InputData inputData, Model model) {
+    public String submitOutput(@ModelAttribute InputRandomizerData inputRandomizerData, Model model) {
 
-        Randomizer randomizer = new Randomizer(inputData);
+        Randomizer randomizer = new Randomizer(inputRandomizerData);
         List<Integer> numbers = randomizer.generate();
         int period = randomizer.findPeriod(numbers);
 

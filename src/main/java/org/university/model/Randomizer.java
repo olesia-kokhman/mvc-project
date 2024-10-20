@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Randomizer {
 
-    private InputData data;
+    private InputRandomizerData data;
 
-    public Randomizer(InputData data) {
+    public Randomizer(InputRandomizerData data) {
         this.data = data;
     }
 
