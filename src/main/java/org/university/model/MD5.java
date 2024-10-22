@@ -8,6 +8,8 @@ public class MD5 {
     private int C = 0x98badcfe;
     private int D = 0x10325476;
 
+    int fullMultiple = 512;
+
     public static final int[] T = {
             0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
             0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
@@ -54,12 +56,12 @@ public class MD5 {
         return builder.toString();
     }
 
-    private String addSupplement(String message) { // add supplement
+    private String addSupplement(String message) {
 
         StringBuilder builder = new StringBuilder();
         builder.append(message);
         int basicMultiple = 448;
-        int fullMultiple = 512;
+
         int one = 1;
 
         int remainder = message.length() % fullMultiple;
@@ -67,7 +69,7 @@ public class MD5 {
         int addNumber = 0;
         if(remainder < basicMultiple) {
             addNumber = basicMultiple - remainder - one;
-        } else { // 456
+        } else {
             addNumber = (basicMultiple + fullMultiple) - remainder - one;
         }
 
@@ -86,21 +88,41 @@ public class MD5 {
         TriFunction<Integer, Integer, Integer, Integer> h = (b, c, d) -> (b ^ c ^ d);
         TriFunction<Integer, Integer, Integer, Integer> i = (b, c, d) -> (c ^ (b | ~d));
 
-        // розділити по 512 бітів на блок і блоки розділити на 16 слів - x[0] - це слово
+        int counter = 0;
+        int wordLength = 32;
+        int[] X = new int[fullBinaryMessage.length() / wordLength];
+        int blocks = fullBinaryMessage.length() / fullMultiple;
+        for(int block = 1; block <= blocks; block++) {
+            for(int start = counter * fullMultiple; start < block * fullMultiple; start += wordLength) {
+                String word = fullBinaryMessage.substring(start, start + 31);
+                int word16 = Integer.parseInt(word);
+                X[counter] = word16;
+                counter++;
+            }
+        }
 
         int maxRound = 64;
+        int currentX = X[0];
         TriFunction<Integer, Integer, Integer, Integer> currentFunction = f;
-        for(int currentRound = 1; currentRound <= maxRound; currentRound++) {
-            if(currentRound > 16 && currentRound <= 32) {
+
+        for(int currentRound = 0; currentRound < maxRound; currentRound++) {
+            if(currentRound < 16) {
+                currentFunction = f;
+                currentX = X[currentRound]; // 0..15
+            } else if(currentRound >= 16 && currentRound < 32) {
                 currentFunction = g;
-            } else if(currentRound > 32 && currentRound <= 48) {
+                currentX = X[(1 + 5 * (currentRound % 16)) % 16];
+            } else if(currentRound >= 32 && currentRound < 48) {
                 currentFunction = h;
-            } else if(currentRound > 48) {
+                currentX = X[(5 + 3 * (currentRound % 16)) % 16];
+            } else if(currentRound >= 48) {
                 currentFunction = i;
+                currentX = X[7 * (currentRound % 16) % 16];
             }
 
-            int sIndex = 1;
-            A = B + Integer.rotateLeft(A + currentFunction.apply(B, C, D) + X[0], S[sIndex]);
+            int sIndex = 1; // додати логіку визначення s
+
+            A = B + Integer.rotateLeft(A + currentFunction.apply(B, C, D) + currentX, S[sIndex]);
 
         }
 
