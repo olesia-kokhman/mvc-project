@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="caabc41c-8bf0-4699-aa1e-5cdb8510eb3f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/university/controller/MD5Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/controller/MD5Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/university/model/MD5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/university/model/MD5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hashing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hashing.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +195,7 @@
       <workItem from="1729374299732" duration="9631000" />
       <workItem from="1729509763619" duration="1409000" />
       <workItem from="1729514341797" duration="4014000" />
-      <workItem from="1729626651879" duration="4700000" />
+      <workItem from="1729626651879" duration="7844000" />
     </task>
     <servers />
   </component>

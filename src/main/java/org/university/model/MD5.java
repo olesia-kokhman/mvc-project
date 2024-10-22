@@ -30,10 +30,10 @@ public class MD5 {
     };
 
     public static final int[] S = {
-            7, 12, 17, 22,
-            5, 9, 14, 20,
-            4, 11, 16, 23,
-            6, 10, 15, 21
+            7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+            5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
+            4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
+            6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
     };
 
     public MD5(String message) {
@@ -94,8 +94,8 @@ public class MD5 {
         int blocks = fullBinaryMessage.length() / fullMultiple;
         for(int block = 1; block <= blocks; block++) {
             for(int start = counter * fullMultiple; start < block * fullMultiple; start += wordLength) {
-                String word = fullBinaryMessage.substring(start, start + 31);
-                int word16 = Integer.parseInt(word);
+                String word = fullBinaryMessage.substring(start, start + 32);
+                int word16 = Integer.parseInt(word, 2);
                 X[counter] = word16;
                 counter++;
             }
@@ -118,15 +118,36 @@ public class MD5 {
             } else if(currentRound >= 48) {
                 currentFunction = i;
                 currentX = X[7 * (currentRound % 16) % 16];
+
             }
 
-            int sIndex = 1; // додати логіку визначення s
+            int tempA = A;
+            A = B + Integer.rotateLeft(A + currentFunction.apply(B, C, D) + currentX + T[currentRound], S[currentRound]);
 
-            A = B + Integer.rotateLeft(A + currentFunction.apply(B, C, D) + currentX, S[sIndex]);
-
+            D = C;
+            C = B;
+            B = B + tempA;
         }
 
-        return null;
+        int a = 0x67452301;
+        int b = 0xefcdab89;
+        int c = 0x98badcfe;
+        int d = 0x10325476;
+
+        A += a;
+        B += b;
+        C += c;
+        D += d;
+        return toHexString(A) + toHexString(B) + toHexString(C) + toHexString(D);
+    }
+
+    private String toHexString(int n) {
+        return String.format("%02x%02x%02x%02x",
+                (n & 0xFF),
+                (n >> 8) & 0xFF,
+                (n >> 16) & 0xFF,
+                (n >> 24) & 0xFF
+        );
     }
 
 }
