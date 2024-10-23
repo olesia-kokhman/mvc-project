@@ -3,10 +3,10 @@ package org.university.model;
 public class MD5 {
     private String fullBinaryMessage;
 
-    private int A = 0x67452301;
-    private int B = 0xefcdab89;
-    private int C = 0x98badcfe;
-    private int D = 0x10325476;
+    private long A = 0x67452301L;
+    private long B = 0xefcdab89L;
+    private long C = 0x98badcfeL;
+    private long D = 0x10325476L;
 
     int fullMultiple = 512;
 
@@ -52,22 +52,19 @@ public class MD5 {
             builder.append(String.format("%8s", Integer.toBinaryString(character)).replace(' ', '0'));
         }
 
-        System.out.println(builder);
         return builder.toString();
     }
 
     private String addSupplement(String message) {
-
         StringBuilder builder = new StringBuilder();
         builder.append(message);
         int basicMultiple = 448;
 
         int one = 1;
-
         int remainder = message.length() % fullMultiple;
 
         int addNumber = 0;
-        if(remainder < basicMultiple) {
+        if (remainder < basicMultiple) {
             addNumber = basicMultiple - remainder - one;
         } else {
             addNumber = (basicMultiple + fullMultiple) - remainder - one;
@@ -76,7 +73,7 @@ public class MD5 {
         builder.append("1");
         builder.append("0".repeat(addNumber));
 
-        String binaryLength = String.format("%64s", Integer.toBinaryString(message.length())).replace(' ', '0');
+        String binaryLength = String.format("%64s", Long.toBinaryString(message.length() * 8)).replace(' ', '0');
         builder.append(binaryLength);
 
         return builder.toString();
@@ -92,62 +89,61 @@ public class MD5 {
         int wordLength = 32;
         int[] X = new int[fullBinaryMessage.length() / wordLength];
         int blocks = fullBinaryMessage.length() / fullMultiple;
-        for(int block = 1; block <= blocks; block++) {
-            for(int start = counter * fullMultiple; start < block * fullMultiple; start += wordLength) {
-                String word = fullBinaryMessage.substring(start, start + 32);
-                int word16 = Integer.parseInt(word, 2);
-                X[counter] = word16;
+
+        for (int block = 1; block <= blocks; block++) {
+            for (int start = counter; start < block * fullMultiple; start += wordLength) {
+                String word = fullBinaryMessage.substring(start, start + wordLength);
+                X[counter] = (int) (Long.parseUnsignedLong(word, 2) & 0xFFFFFFFFL);
                 counter++;
             }
         }
 
         int maxRound = 64;
-        int currentX = X[0];
-        TriFunction<Integer, Integer, Integer, Integer> currentFunction = f;
 
-        for(int currentRound = 0; currentRound < maxRound; currentRound++) {
-            if(currentRound < 16) {
+        long AA = A;
+        long BB = B;
+        long CC = C;
+        long DD = D;
+
+        TriFunction<Integer, Integer, Integer, Integer> currentFunction = f;
+        int currentX;
+
+        for (int currentRound = 0; currentRound < maxRound; currentRound++) {
+            if (currentRound < 16) {
                 currentFunction = f;
-                currentX = X[currentRound]; // 0..15
-            } else if(currentRound >= 16 && currentRound < 32) {
+                currentX = X[currentRound];
+            } else if (currentRound < 32) {
                 currentFunction = g;
                 currentX = X[(1 + 5 * (currentRound % 16)) % 16];
-            } else if(currentRound >= 32 && currentRound < 48) {
+            } else if (currentRound < 48) {
                 currentFunction = h;
                 currentX = X[(5 + 3 * (currentRound % 16)) % 16];
-            } else if(currentRound >= 48) {
+            } else {
                 currentFunction = i;
                 currentX = X[7 * (currentRound % 16) % 16];
-
             }
 
-            int tempA = A;
-            A = B + Integer.rotateLeft(A + currentFunction.apply(B, C, D) + currentX + T[currentRound], S[currentRound]);
-
+            long temp = (B + Integer.rotateLeft((int) ((A + currentFunction.apply((int) B, (int) C, (int) D) + currentX + T[currentRound]) & 0xFFFFFFFFL), S[currentRound])) & 0xFFFFFFFFL;
+            A = D;
             D = C;
             C = B;
-            B = B + tempA;
+            B = temp;
         }
 
-        int a = 0x67452301;
-        int b = 0xefcdab89;
-        int c = 0x98badcfe;
-        int d = 0x10325476;
+        A = (A + AA) & 0xFFFFFFFFL;
+        B = (B + BB) & 0xFFFFFFFFL;
+        C = (C + CC) & 0xFFFFFFFFL;
+        D = (D + DD) & 0xFFFFFFFFL;
 
-        A += a;
-        B += b;
-        C += c;
-        D += d;
-        return toHexString(A) + toHexString(B) + toHexString(C) + toHexString(D);
+        return toHexString((int) A) + toHexString((int) B) + toHexString((int) C) + toHexString((int) D);
     }
 
     private String toHexString(int n) {
         return String.format("%02x%02x%02x%02x",
-                (n & 0xFF),
-                (n >> 8) & 0xFF,
+                (n >> 24) & 0xFF,
                 (n >> 16) & 0xFF,
-                (n >> 24) & 0xFF
+                (n >> 8) & 0xFF,
+                n & 0xFF
         );
     }
-
 }
